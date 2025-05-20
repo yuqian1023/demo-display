@@ -1,161 +1,241 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+      草图智能生成系统 | Sketch-centric Intelligent Generation System
+    </title>
+    <meta
+      name="description"
+      content="基于草图的智能生成系统，包括DiffSketcher、SketchSampler、Inversion-by-Inversion和SketchInverter等多种草图生成技术。"
+    />
+    <meta property="og:title" content="草图智能生成系统" />
+    <meta
+      property="og:description"
+      content="基于草图的智能生成系统，包括多种草图生成技术。"
+    />
+    <meta property="og:type" content="website" />
+    <meta name="theme-color" content="#6495ED" />
 
-<head>
-    <!--Include Bootstrap’s JS-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
-        crossorigin="anonymous"></script>
-    <!-- Custom JS for this template -->
-    <script src="js/copyText.js"></script>
-    <!--Include Latex (optional)-->
-    <!--<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>-->
-    <!--<script type="text/x-mathjax-config">-->
-    <!--    MathJax.Hub.Config({-->
-    <!--        tex2jax: {inlineMath: [['$', '$']]},-->
-    <!--        messageStyle: "none"-->
-    <!--    });-->
-    <!--</script>-->
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
+      crossorigin="anonymous"
+    />
+    <!-- Bootstrap Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+    />
+    <!-- Custom styles -->
+    <link href="style.css" rel="stylesheet" />
 
-    <!-- Include the icon fonts stylesheet-->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-    <!--Include Bootstrap’s CSS-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-    <!-- Custom styles for this template -->
-    <link href="style.css" rel="stylesheet">
+    <!-- Bootstrap JS -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+      crossorigin="anonymous"
+      defer
+    ></script>
+    <!-- Custom JS -->
+    <script src="js/copyText.js" defer></script>
+  </head>
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Sketch-centric Intelligent Generation System</title>
-    <meta property="og:description" content="Paper description." />
-    <meta name="description" content="webpage description">
-</head>
-
-<body>
-    <header class="container">
-        <hr>
-        <!-- Paper Title -->
-        <div class="container text-center">
-            <a class="blog-header-logo text-body-emphasis" href="#">Sketch-centric Intelligent Generation System</a>
+  <body class="bg-light">
+    <header class="py-3 mb-4 border-bottom bg-white shadow-sm">
+      <div class="container">
+        <div class="text-center">
+          <a
+            class="blog-header-logo text-body-emphasis text-decoration-none"
+            href="#"
+          >
+            草图智能生成系统
+            <div class="fs-6 text-secondary">
+              Sketch-centric Intelligent Generation System
+            </div>
+          </a>
         </div>
-        <hr>
+      </div>
     </header>
-    <br>
 
-    <main class="container">
-
-        <div class="container">
-            <div class="row">
-                <div class="col">
-                    <!-- DiffSketcher -->
-                    <div class="card">
-                        <div class="card-body">
-                            <h2 class="card-title card-title-margin text-center"><a
-                                    href="http://219.147.100.43:1236/"
-                                    target="_blank">DiffSketcher</a>
-                            </h2>
-                            <hr class="body-hr" />
-                            <p class="card-text">
-                                使用<strong>给定的文本描述</strong>生成<strong>符合描述的矢量手绘草图</strong>。
-                            </p>
-                            <div class="text-center">
-                                <figure class="figure">
-                                    <img src="./assets/diffsketcher/results.png"
-                                        class="img-thumbnail figure-img img-fluid rounded" alt="online demo">
-                                </figure>
-                            </div>
-                            <div>
-                                DiffSketcher: Text Guided Vector Sketch Synthesis through Latent Diffusion Models,
-                                <strong>NeurIPS 2023</strong>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <!-- SketchSampler -->
-                    <div class="card">
-                        <div class="card-body">
-                            <h2 class="card-title card-title-margin text-center"><a
-                                    href="http://219.147.100.43:1237/" target="_blank">SketchSampler</a></h2>
-                            <hr class="body-hr" />
-                            <p class="card-text">
-                                使用<strong>给定的手绘草图</strong>生成<strong>草图所表示的内容的 3D 点云模型</strong>。
-                            </p>
-                            <div class="text-center">
-                                <figure class="figure">
-                                    <img src="./assets/sketchsampler/results.png"
-                                        class="img-thumbnail figure-img img-fluid rounded" alt="online demo">
-                                </figure>
-                            </div>
-                            <div>
-                                SketchSampler: Sketch-based 3D Reconstruction via View-dependent Depth Sampling, 
-                                <strong>ECCV 2022</strong>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    <main class="container pb-5">
+      <div class="row g-4">
+        <!-- DiffSketcher -->
+        <div class="col-md-6">
+          <div class="card h-100 shadow-sm">
+            <div class="card-body">
+              <h2 class="card-title card-title-margin text-center">
+                <a
+                  href="https://ximinng.github.io/DiffSketcher-project/"
+                  target="_blank"
+                  class="text-decoration-none"
+                >
+                  DiffSketcher <i class="bi bi-box-arrow-up-right fs-6"></i>
+                </a>
+              </h2>
+              <hr class="body-hr" />
+              <p class="card-text">
+                使用<strong>给定的文本描述</strong>生成<strong>符合描述的矢量手绘草图</strong>。
+              </p>
+              <div class="text-center">
+                <figure class="figure">
+                  <img
+                    src="./assets/diffsketcher/results.png"
+                    class="img-thumbnail figure-img img-fluid rounded"
+                    alt="DiffSketcher示例结果"
+                    loading="lazy"
+                  />
+                </figure>
+              </div>
+              <div class="mt-3 text-secondary">
+                <i
+                  >DiffSketcher: Text Guided Vector Sketch Synthesis through
+                  Latent Diffusion Models</i
+                >,
+                <strong>NeurIPS 2023</strong>
+              </div>
             </div>
-            <br>
-            <div class="row">
-                <div class="col">
-                    <!-- Inversion-by-Inversion -->
-                    <div class="card">
-                        <div class="card-body">
-                            <h2 class="card-title card-title-margin text-center"><a
-                                    href="http://219.147.100.43:1234/"
-                                    target="_blank">Inversion-by-Inversion</a>
-                            </h2>
-                            <hr class="body-hr" />
-                            <p class="card-text">
-                                可以使用<strong>给定的手绘草图和给定自然图像样本</strong>，生成一张<strong>自然图像</strong>。
-                            </p>
-                            <div class="text-center">
-                                <figure class="figure">
-                                    <img src="./assets/inversionbyinversion/results1.png"
-                                        class="img-thumbnail figure-img img-fluid rounded" alt="online demo">
-                                    <img src="./assets/inversionbyinversion/results2.png"
-                                        class="img-thumbnail figure-img img-fluid rounded" alt="online demo">
-                                </figure>
-                            </div>
-                            <div>
-                                Inversion-by-Inversion: Exemplar-based Sketch-to-Photo Synthesis via Stochastic
-                                Differential Equations without Training
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <!-- SketchInverter -->
-                    <div class="card">
-                        <div class="card-body">
-                            <h2 class="card-title card-title-margin text-center"><a href="http://219.147.100.43:1235/"
-                                    target="_blank">SketchInverter</a>
-                            </h2>
-                            <hr class="body-hr" />
-                            <p class="card-text">
-                                使用<strong>给定的手绘草图</strong>，生成<strong>草图所表示的内容的自然图像</strong>。
-                            </p>
-                            <div class="text-center">
-                                <figure class="figure">
-                                    <img src="./assets/sketchinverter/results.png"
-                                        class="img-thumbnail figure-img img-fluid rounded" alt="online demo">
-                                    <img src="./assets/sketchinverter/results1.png"
-                                        class="img-thumbnail figure-img img-fluid rounded" alt="online demo">
-                                </figure>
-                            </div>
-                            <div>
-                                SketchInverter: Multi-Class Sketch-Based Image Generation via GAN Inversion, 
-                                <strong>WACV 2023</strong>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <br>
+          </div>
         </div>
+
+        <!-- SketchSampler -->
+        <div class="col-md-6">
+          <div class="card h-100 shadow-sm">
+            <div class="card-body">
+              <h2 class="card-title card-title-margin text-center">
+                <a
+                  href="https://cjeen.github.io/SketchSamplerPage/"
+                  target="_blank"
+                  class="text-decoration-none"
+                >
+                  SketchSampler <i class="bi bi-box-arrow-up-right fs-6"></i>
+                </a>
+              </h2>
+              <hr class="body-hr" />
+              <p class="card-text">
+                使用<strong>给定的手绘草图</strong>生成<strong
+                  >草图所表示的内容的 3D 点云模型</strong
+                >。
+              </p>
+              <div class="text-center">
+                <figure class="figure">
+                  <img
+                    src="./assets/sketchsampler/results.png"
+                    class="img-thumbnail figure-img img-fluid rounded"
+                    alt="SketchSampler示例结果"
+                    loading="lazy"
+                  />
+                </figure>
+              </div>
+              <div class="mt-3 text-secondary">
+                <i
+                  >SketchSampler: Sketch-based 3D Reconstruction via
+                  View-dependent Depth Sampling</i
+                >,
+                <strong>ECCV 2022</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Inversion-by-Inversion -->
+        <div class="col-md-6">
+          <div class="card h-100 shadow-sm">
+            <div class="card-body">
+              <h2 class="card-title card-title-margin text-center">
+                <a
+                  href="https://ximinng.github.io/inversion-by-inversion-project/"
+                  target="_blank"
+                  class="text-decoration-none"
+                >
+                  Inversion-by-Inversion
+                  <i class="bi bi-box-arrow-up-right fs-6"></i>
+                </a>
+              </h2>
+              <hr class="body-hr" />
+              <p class="card-text">
+                可以使用<strong>给定的手绘草图和给定自然图像样本</strong>，生成一张<strong>自然图像</strong>。
+              </p>
+              <div class="text-center">
+                <figure class="figure">
+                  <img
+                    src="./assets/inversionbyinversion/results1.png"
+                    class="img-thumbnail figure-img img-fluid rounded"
+                    alt="Inversion-by-Inversion示例结果1"
+                    loading="lazy"
+                  />
+                  <img
+                    src="./assets/inversionbyinversion/results2.png"
+                    class="img-thumbnail figure-img img-fluid rounded"
+                    alt="Inversion-by-Inversion示例结果2"
+                    loading="lazy"
+                  />
+                </figure>
+              </div>
+              <div class="mt-3 text-secondary">
+                <i
+                  >Inversion-by-Inversion: Exemplar-based Sketch-to-Photo
+                  Synthesis via Stochastic Differential Equations without
+                  Training</i
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SketchInverter -->
+        <div class="col-md-6">
+          <div class="card h-100 shadow-sm">
+            <div class="card-body">
+              <h2 class="card-title card-title-margin text-center">
+                <a
+                  href="#"
+                  target="_blank"
+                  class="text-decoration-none"
+                >
+                  SketchInverter <i class="bi bi-box-arrow-up-right fs-6"></i>
+                </a>
+              </h2>
+              <hr class="body-hr" />
+              <p class="card-text">
+                使用<strong>给定的手绘草图</strong>，生成<strong>草图所表示的内容的自然图像</strong>。
+              </p>
+              <div class="text-center">
+                <figure class="figure">
+                  <img
+                    src="./assets/sketchinverter/results.png"
+                    class="img-thumbnail figure-img img-fluid rounded"
+                    alt="SketchInverter示例结果1"
+                    loading="lazy"
+                  />
+                  <img
+                    src="./assets/sketchinverter/results1.png"
+                    class="img-thumbnail figure-img img-fluid rounded"
+                    alt="SketchInverter示例结果2"
+                    loading="lazy"
+                  />
+                </figure>
+              </div>
+              <div class="mt-3 text-secondary">
+                <i
+                  >SketchInverter: Multi-Class Sketch-Based Image Generation via
+                  GAN Inversion</i
+                >,
+                <strong>WACV 2023</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </main>
 
-</body>
-
+    <footer class="blog-footer mt-5">
+      <div class="container text-center">
+        <p>© 2023-2024 草图智能生成系统</p>
+      </div>
+    </footer>
+  </body>
 </html>
